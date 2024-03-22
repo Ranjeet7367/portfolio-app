@@ -17,11 +17,11 @@ app.use(express.json());
 // static file
 app.use(express.static(path.join(__dirname,'./client/build')))
 //routes
+
+app.use("/api/v1/portfolio", require("./routes/portfolioRoute"));
 app.get('*',function(req,res){
   res.sendFile(path.join(__dirname,'./my-app/client/index.html'))
 });
-app.use("/api/v1/portfolio", require("./routes/portfolioRoute"));
-
 //port
 
 const PORT = process.env.PORT || 8080;
