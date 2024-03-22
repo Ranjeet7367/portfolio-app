@@ -13,9 +13,12 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+// static file
+app.use(express.static(path.join(__dirname,'./my-app/build')))
 //routes
-
+app.get('*',function(req,res){
+  res.sendFile(path.join(__dirname,'./my-app/build/index.html'))
+});
 app.use("/api/v1/portfolio", require("./routes/portfolioRoute"));
 
 //port
